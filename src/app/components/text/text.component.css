@@ -1,0 +1,10 @@
+.emphasis {
+  color: var(--base-black);
+  font-weight: 700;
+  font-size: 1.7rem;
+}
+
+.normal {
+  color: var(--text-primary-color);
+  font-size: 1.4rem;
+}

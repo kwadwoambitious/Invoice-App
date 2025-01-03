@@ -1,0 +1,12 @@
+<button (click)="toggleTheme()">
+  <img
+    [src]="
+      isDarkMode()
+        ? '/assets/images/icon-sun.svg'
+        : '/assets/images/icon-moon.svg'
+    "
+    [alt]="isDarkMode() ? 'sun-icon' : 'moon-icon'"
+    [height]="deviceWidth <= 465 ? 24 : 27"
+    [width]="deviceWidth <= 465 ? 24 : 27"
+  />
+</button>

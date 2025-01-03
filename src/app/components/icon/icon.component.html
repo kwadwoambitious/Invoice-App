@@ -1,0 +1,12 @@
+<img
+  [src]="imgSrc"
+  [alt]="altText"
+  [height]="height"
+  [width]="width"
+  [ngStyle]="{
+    transform: 'rotate(' + rotate + ')',
+    cursor: isInteractive ? 'pointer' : ''
+  }"
+  (click)="handleClick()"
+/>
+<ng-content></ng-content>

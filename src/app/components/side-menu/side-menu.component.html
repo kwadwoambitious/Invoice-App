@@ -1,0 +1,19 @@
+<span class="top">
+  <app-icon
+    class="logo"
+    imgSrc="/assets/images/logo.svg"
+    [height]="deviceWidth <= 940 ? 34 : 49"
+    [width]="deviceWidth <= 940 ? 37 : 55"
+    altText="logo"
+    [isInteractive]="false"
+  ></app-icon>
+</span>
+
+<span class="bottom">
+  <app-theme-toggler></app-theme-toggler>
+  <hr />
+  <app-avatar
+    [height]="deviceWidth <= 465 ? 29 : 40"
+    [width]="deviceWidth <= 465 ? 29 : 40"
+  ></app-avatar>
+</span>

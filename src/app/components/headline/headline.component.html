@@ -1,0 +1,28 @@
+<span class="title">
+  <app-text type="emphasis" [size]="deviceWidth <= 465 ? '3rem' : '4rem'"
+    >Invoices</app-text
+  >
+  @if(!!invoices().length){
+  <app-text size="1.3rem">{{
+    deviceWidth <= 465
+      ? invoices().length + " invoices"
+      : "There are " + invoices().length + " total invoices"
+  }}</app-text>
+  }@else {
+  <app-text>No invoices</app-text>
+  }
+</span>
+
+<span class="actions">
+  <app-filter></app-filter>
+
+  <app-button (onClick)="openForm()">
+    <app-icon
+      imgSrc="/assets/images/icon-plus.svg"
+      altText="icon-plus"
+      [height]="13"
+      [width]="13"
+    ></app-icon>
+    <p>{{ deviceWidth <= 465 ? "New" : "New Invoice" }}</p>
+  </app-button>
+</span>

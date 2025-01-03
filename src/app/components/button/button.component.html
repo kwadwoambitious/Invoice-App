@@ -1,0 +1,21 @@
+<button
+  [attr.data-type]="type"
+  [ngStyle]="{
+    backgroundColor:
+      type === 'delete'
+        ? 'var(--delete)'
+        : type === 'edit'
+        ? 'var(--edit)'
+        : '',
+    color: color ? color : ''
+  }"
+  [ngClass]="{
+    addBtn: type === 'add',
+    draftBtn: type === 'draft',
+    cancelBtn: type === 'cancel'
+  }"
+  (click)="clickHandler($event)"
+  [disabled]="disabled"
+>
+  <ng-content></ng-content>
+</button>
