@@ -1,0 +1,10 @@
+<main>
+  <app-side-menu></app-side-menu>
+  @if(isFormActive()){
+  <app-form></app-form>
+  }
+  <router-outlet></router-outlet>
+</main>
+@if(isFormActive()){
+<app-dialog></app-dialog>
+}

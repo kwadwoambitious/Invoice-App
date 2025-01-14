@@ -1,0 +1,21 @@
+<div>
+  <span class="logo-container">
+    <app-icon
+      class="logo"
+      imgSrc="/assets/images/logo.svg"
+      [height]="viewportWidth <= 940 ? 34 : 49"
+      [width]="viewportWidth <= 940 ? 37 : 55"
+      altText="logo"
+      [isSelectable]="false"
+    ></app-icon>
+  </span>
+  
+  <span class="theme-toggler-and-avatar">
+    <app-theme-toggler></app-theme-toggler>
+    <hr />
+    <app-avatar
+      [height]="viewportWidth <= 500 ? 29 : 40"
+      [width]="viewportWidth <= 500 ? 29 : 40"
+    ></app-avatar>
+  </span>
+</div>

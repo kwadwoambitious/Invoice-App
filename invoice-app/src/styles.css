@@ -1,0 +1,99 @@
+@font-face {
+  font-family: "League Spartan";
+  src: url("/assets/fonts/LeagueSpartan-VariableFont_wght.ttf")
+    format("truetype");
+}
+
+:root {
+  --primary-color: #7c5dfa;
+  --base-black: #0c0e16;
+  --text-primary-color: #888eb0;
+  --text-secondary-color: #858bb2;
+  --grey: #dfe3fa;
+  --secondary-color: #1e2139;
+  --side-menu-color: #373b53;
+  --light-bg: #f8f8fb;
+  --dark-bg: #141625;
+  --form-bg: #fff;
+  --input-bg: #fff;
+  --error: #ec5757;
+  --tertiary-color: #7e88c3;
+  --white: #fff;
+  --paid: #33d69f;
+  --paid-bg: #33d6a02e;
+  --draft: #373b53;
+  --draft-bg: #373b532e;
+  --pending: #ff8f00;
+  --pending-bg: #ff910017;
+  --edit: #f9fafe;
+  --edit-text-color: #7e88c3;
+  --delete: #ec5757;
+  --item-summary-bg: #f9fafe;
+  --total-bg: #373b53;
+  --accent-1: #777f98;
+  --add: #f9fafe;
+  --cancel: #f9fafe;
+  --filter-bg: #fff;
+  --date-color: #0c0e16;
+  --footer-bg: #fff;
+}
+
+.dark-mode {
+  --white: #1e2139;
+  --base-black: #fff;
+  --light-bg: #141625;
+  --side-menu-color: #1e2139;
+  --form-bg: #141625;
+  --input-bg: #1e2139;
+  --border: #252945;
+  --add: #1e2139;
+  --item-summary-bg: #252945;
+  --total-bg: #0c0e16;
+  --cancel: #252945;
+  --draft: #dfe3fa;
+  --secondary-color: #fff;
+  --grey: #1e2139;
+  --filter-bg: #252945;
+  --date-color: #dfe3fa;
+  --footer-bg: #141625;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: "League Spartan", sans-serif;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  color: var(--text-primary-color);
+  background-color: var(--light-bg);
+  letter-spacing: 0.5px;
+  overflow-x: hidden;
+}
+button {
+  font-family: "League Spartan", sans-serif;
+}
+@media (max-width: 770px) {
+  html {
+    font-size: 50%;
+  }
+}
+@media (max-width: 500px) {
+  html {
+    font-size: 54%;
+  }
+}
+@media (max-width: 350px) {
+  html {
+    font-size: 50%;
+  }
+}

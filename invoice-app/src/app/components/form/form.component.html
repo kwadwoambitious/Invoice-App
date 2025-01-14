@@ -1,0 +1,502 @@
+<form [formGroup]="invoiceCreationForm" (ngSubmit)="submitForm()">
+  @if(viewportWidth <= 500){
+  <app-icon
+    imgSrc="/assets/images/icon-arrow-left.svg"
+    altText="arrow-left"
+    [width]="10"
+    [height]="13"
+    (onClick)="discardChanges()"
+    ><app-text>Go back</app-text></app-icon
+  >
+  } @if(formIsEditing()){
+  <app-text type="bold" size="2.1rem"
+    >Edit
+    <p>#</p>
+    {{ selectedInvoice()?.id }}
+  </app-text>
+  }@else {
+  <app-text type="bold" size="3rem">New Invoice</app-text>
+  }
+  <section class="sender-address">
+    <app-text color="var(--primary-color)" size="1.2rem" type="bold"
+      >Bill From</app-text
+    >
+    <ng-container formGroupName="senderAddress">
+      <div
+        class="input-field"
+        [class.error]="hasValidationError('senderAddress.street', 'required')"
+      >
+        <span class="labels">
+          <label for="sender-street">Street Address</label>
+          @if(hasValidationError('senderAddress.street', 'required')){
+          <app-text color="var(--error)" size="1.1rem" type="bold"
+            >can't be empty</app-text
+          >
+          }
+        </span>
+        <input class="form-input" type="text" formControlName="street" />
+      </div>
+      <div class="address">
+        <div
+          class="input-field"
+          [class.error]="hasValidationError('senderAddress.city', 'required')"
+        >
+          <span class="labels">
+            <label for="client-city">City</label>
+            @if(hasValidationError('senderAddress.city', 'required')){
+            <app-text color="var(--error)" size="1.1rem"
+              >can't be empty</app-text
+            >
+            }
+          </span>
+          <input class="form-input" type="text" formControlName="city" />
+        </div>
+        <div
+          class="input-field"
+          [class.error]="hasValidationError('senderAddress.postCode', 'required')"
+        >
+          <span class="labels">
+            <label for="client-post-code">Post Code</label>
+            @if(hasValidationError('senderAddress.postCode', 'required')){
+            <app-text color="var(--error)" size="1.1rem"
+              >can't be empty</app-text
+            >
+            }
+          </span>
+          <input class="form-input" type="text" formControlName="postCode" />
+        </div>
+        <div
+          class="input-field"
+          [class.error]="hasValidationError('senderAddress.country', 'required')"
+        >
+          <span class="labels">
+            <label for="client-country">Country</label>
+            @if(hasValidationError('senderAddress.country', 'required')){
+            <app-text color="var(--error)" size="1.1rem"
+              >can't be empty</app-text
+            >
+            }
+          </span>
+          <input class="form-input" type="text" formControlName="country" />
+        </div>
+      </div>
+    </ng-container>
+  </section>
+
+  <section class="client-address">
+    <app-text color="var(--primary-color)" size="1.2rem" type="bold"
+      >Bill To</app-text
+    >
+    <div>
+      <div
+        class="input-field"
+        [class.error]="hasValidationError('clientName', 'required')"
+      >
+        <span class="labels">
+          <label for="client-name">Client's Name</label>
+          @if(hasValidationError('clientName', 'required')){
+          <app-text color="var(--error)" size="1.1rem">can't be empty</app-text>
+          }
+        </span>
+        <input
+          class="form-input"
+          id="client-name"
+          type="text"
+          formControlName="clientName"
+        />
+      </div>
+      <div
+        class="input-field"
+        [class.error]="hasValidationError('clientEmail', 'required')"
+      >
+        <span class="labels">
+          <label for="client-email">Client's Email</label>
+          @if(hasValidationError('clientEmail', 'required')){
+          <app-text color="var(--error)" size="1.1rem">can't be empty</app-text>
+          }
+        </span>
+        <input
+          class="form-input"
+          id="client-email"
+          type="text"
+          formControlName="clientEmail"
+        />
+      </div>
+
+      <ng-container formGroupName="clientAddress">
+        <div
+          class="input-field"
+          [class.error]="hasValidationError('clientAddress.street', 'required')"
+        >
+          <span class="labels">
+            <label for="client-street">Street Address</label>
+            @if(hasValidationError('clientAddress.street', 'required')){
+            <app-text color="var(--error)" size="1.1rem"
+              >can't be empty</app-text
+            >
+            }
+          </span>
+          <input
+            class="form-input"
+            id="client-street"
+            type="text"
+            formControlName="street"
+          />
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="address">
+      <ng-container formGroupName="clientAddress">
+        <div
+          class="input-field"
+          [class.error]="hasValidationError('clientAddress.city', 'required')"
+        >
+          <span class="labels">
+            <label for="client-city">City</label>
+            @if(hasValidationError('clientAddress.city', 'required')){
+            <app-text color="var(--error)" size="1.1rem"
+              >can't be empty</app-text
+            >
+            }
+          </span>
+          <input class="form-input" type="text" formControlName="city" />
+        </div>
+        <div
+          class="input-field"
+          [class.error]="hasValidationError('clientAddress.postCode', 'required')"
+        >
+          <span class="labels">
+            <label for="client-post-code">Post Code</label>
+            @if(hasValidationError('clientAddress.postCode', 'required')){
+            <app-text color="var(--error)" size="1.1rem"
+              >can't be empty</app-text
+            >
+            }
+          </span>
+          <input class="form-input" type="text" formControlName="postCode" />
+        </div>
+        <div
+          class="input-field"
+          [class.error]="hasValidationError('clientAddress.country', 'required')"
+        >
+          <span class="labels">
+            <label for="client-country">Country</label>
+            @if(hasValidationError('clientAddress.country', 'required')){
+            <app-text color="var(--error)" size="1.1rem"
+              >can't be empty</app-text
+            >
+            }
+          </span>
+          <input class="form-input" type="text" formControlName="country" />
+        </div>
+      </ng-container>
+    </div>
+
+    <section class="dates">
+      <div class="input-field">
+        <label for="invoice-date">Invoice Date</label>
+        <input
+          class="form-input"
+          id="invoice-date"
+          type="date"
+          formControlName="createdAt"
+          [disabled]="true"
+        />
+      </div>
+
+      <div class="input-field">
+        <label for="payment-terms">Payment Terms</label>
+        <button
+          id="payment-terms"
+          class="due-date-dropdown"
+          (click)="toggleDropdown()"
+          (keydown)="toggleDropdown()"
+          type="button"
+        >
+          <div class="due-date-display">
+            <span>
+              <app-text type="regular" size="1.3rem" type="bold">{{
+                paymentTerms() === 1
+                  ? "Next 1 day"
+                  : "Next " + paymentTerms() + " days"
+              }}</app-text>
+              <app-icon
+                imgSrc="/assets/images/icon-arrow-down.svg"
+                altText="down-arrow"
+                [height]="9"
+                [width]="14"
+                [rotationAngle]="dropdownVisible ? '180deg' : '0deg'"
+              ></app-icon>
+            </span>
+          </div>
+
+          <div
+            class="due-date-options"
+            [ngStyle]="{ display: dropdownVisible ? 'flex' : 'none' }"
+          >
+            <label>
+              <input
+                type="radio"
+                value="1"
+                name="paymentTerms"
+                formControlName="paymentTerms"
+              />
+              <p type="bold" size="1.3rem">Next 1 day</p>
+            </label>
+            <hr />
+            <label>
+              <input
+                type="radio"
+                value="7"
+                name="paymentTerms"
+                formControlName="paymentTerms"
+              />
+              <p type="bold" size="1.3rem">Next 7 days</p>
+            </label>
+            <hr />
+            <label>
+              <input
+                type="radio"
+                value="14"
+                name="paymentTerms"
+                formControlName="paymentTerms"
+              />
+              <p type="bold" size="1.3rem">Next 14 days</p>
+            </label>
+            <hr />
+            <label>
+              <input
+                type="radio"
+                value="30"
+                name="paymentTerms"
+                formControlName="paymentTerms"
+              />
+              <p type="bold" size="1.3rem">Next 30 days</p>
+            </label>
+          </div>
+        </button>
+      </div>
+    </section>
+
+    <div class="input-field">
+      <span class="labels">
+        <label for="project-description">Project Description</label>
+        @if(hasValidationError('description', 'required')){
+        <app-text color="var(--error)" size="1.1rem">can't be empty</app-text>
+        }
+      </span>
+      <input
+        class="form-input"
+        id="project-description"
+        type="text"
+        formControlName="description"
+        placeholder="e.g. Graphic Design Service"
+      />
+    </div>
+
+    <div class="items">
+      <app-text size="2rem" type="bold" color="var(--accent-1)"
+        >Item List</app-text
+      >
+      @if(viewportWidth > 500){
+      <div class="grid-row">
+        <app-text color="var(--tertiary-color)" size="1.1rem" class="heading"
+          >Item Name</app-text
+        >
+        <app-text color="var(--tertiary-color)" size="1.1rem" class="heading"
+          >Qty.</app-text
+        >
+        <app-text color="var(--tertiary-color)" size="1.1rem" class="heading"
+          >Price</app-text
+        >
+        <app-text color="var(--tertiary-color)" size="1.1rem" class="heading"
+          >Total</app-text
+        >
+      </div>
+      }
+
+      <ng-container formArrayName="items">
+        @if(formIsEditing()){ @for(item of items.controls; track $index){
+        <div class="grid-row-input" [formGroupName]="$index">
+          <div class="input-field">
+            <label for="item-name-{{ $index }}">Item Name</label>
+            <input
+              class="form-input"
+              id="item-name-{{ $index }}"
+              type="text"
+              formControlName="name"
+            />
+          </div>
+          <div class="input-field">
+            <label for="qty-{{ $index }}">Qty.</label>
+            <input
+              class="form-input"
+              id="qty-{{ $index }}"
+              type="number"
+              formControlName="quantity"
+              min="1"
+              (input)="updateItemTotal($index)"
+            />
+          </div>
+          <div class="input-field">
+            <label for="price-{{ $index }}">Price</label>
+            <input
+              class="form-input"
+              id="price-{{ $index }}"
+              type="number"
+              formControlName="price"
+              min="0"
+              (input)="updateItemTotal($index)"
+            />
+          </div>
+          <div class="input-field">
+            <label for="total-{{ $index }}">Total</label>
+            <span>
+              <input
+                class="form-input"
+                id="total-{{ $index }}"
+                type="number"
+                formControlName="total"
+              />
+              <span
+                (mouseenter)="isMouseOver = true"
+                (mouseleave)="isMouseOver = false"
+              >
+                <app-icon
+                  [imgSrc]="
+                    isMouseOver
+                      ? '/assets/images/icon-delete-hover.svg'
+                      : '/assets/images/icon-delete.svg'
+                  "
+                  class="icon"
+                  altText="trash-can"
+                  [height]="14"
+                  [width]="14"
+                  [isSelectable]="true"
+                  (onClick)="removeItem($index)"
+                ></app-icon>
+              </span>
+            </span>
+          </div>
+        </div>
+        } }@else { @for(item of items.controls; track $index){
+        <div class="grid-row-input" [formGroupName]="$index">
+          <div class="input-field">
+            <label for="item-name-{{ $index }}">Item Name</label>
+            <input
+              class="form-input"
+              id="item-name-{{ $index }}"
+              type="text"
+              formControlName="name"
+            />
+          </div>
+          <div class="input-field">
+            <label for="qty-{{ $index }}">Qty.</label>
+            <input
+              class="form-input"
+              id="qty-{{ $index }}"
+              type="number"
+              formControlName="quantity"
+              min="1"
+              (input)="updateItemTotal($index)"
+            />
+          </div>
+
+          <div class="input-field">
+            <label for="price-{{ $index }}">Price</label>
+            <input
+              class="form-input"
+              id="price-{{ $index }}"
+              type="number"
+              formControlName="price"
+              min="0"
+              (input)="updateItemTotal($index)"
+            />
+          </div>
+          <div class="input-field">
+            <label for="total-{{ $index }}">Total</label>
+            <span>
+              <input
+                class="form-input"
+                id="total-{{ $index }}"
+                type="number"
+                formControlName="total"
+              />
+              <span
+                (mouseenter)="isMouseOver = true"
+                (mouseleave)="isMouseOver = false"
+              >
+                <app-icon
+                  [imgSrc]="
+                    isMouseOver && $index
+                      ? '/assets/images/icon-delete-hover.svg'
+                      : '/assets/images/icon-delete.svg'
+                  "
+                  class="icon"
+                  altText="trash-can"
+                  [height]="14"
+                  [width]="14"
+                  [isSelectable]="true"
+                  (onClick)="removeItem($index)"
+                ></app-icon
+              ></span>
+            </span>
+          </div>
+        </div>
+        } }
+      </ng-container>
+
+      <app-button
+        [type]="ButtonTypeEnum.Add"
+        color="var(--tertiary-color)"
+        (onClick)="addItem()"
+        >+ Add New Item</app-button
+      >
+    </div>
+  </section>
+  @if(!invoiceCreationForm.valid) {
+  <div class="errors">
+    <app-text color="var(--error)">- All fields must be added</app-text>
+    @if(!invoiceCreationForm.valid && formSubmitted) {
+    <app-text color="var(--error)">- An item must be added</app-text>
+    }
+  </div>
+  } @if(formIsEditing()){
+  <div
+    class="shade"
+    [ngStyle]="{ display: darkModeEnabled() ? 'none' : 'block' }"
+  ></div>
+  <footer class="editing-footer">
+    <app-button
+      (onClick)="discardChanges()"
+      [type]="ButtonTypeEnum.Edit"
+      color="var(--tertiary-color)"
+      >Cancel</app-button
+    >
+
+    <app-button (onClick)="sendInvoice()">Save Changes</app-button>
+  </footer>
+  }@else {
+  <div
+    class="shade"
+    [ngStyle]="{ display: darkModeEnabled() ? 'none' : 'block' }"
+  ></div>
+  <footer>
+    <app-button
+      (onClick)="discardChanges()"
+      [type]="ButtonTypeEnum.Edit"
+      color="var(--tertiary-color)"
+      >Discard</app-button
+    >
+
+    <span>
+      <app-button [type]="ButtonTypeEnum.Draft" (onClick)="saveAsDraft()"
+        >Save as Draft</app-button
+      >
+      <app-button (onClick)="sendInvoice()">Save & Send</app-button>
+    </span>
+  </footer>
+
+  }
+</form>

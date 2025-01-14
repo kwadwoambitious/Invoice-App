@@ -1,0 +1,21 @@
+<section>
+  <app-headline></app-headline>
+  @if(allInvoices().length > 0){ @if(isLoading()){
+  <p>Loading...</p>
+  }@else {
+  <app-invoice-card></app-invoice-card>
+  } }@else {
+  <div>
+    <app-icon
+      imgSrc="/assets/images/illustration-empty.svg"
+      altText="empty icon"
+      [height]="220"
+      [width]="240"
+    ></app-icon>
+    <app-text type="bold" size="2.1rem">There is nothing here</app-text>
+    <app-text size="1.2rem">
+      Create an invoice by clicking the New Invoice button and get started
+    </app-text>
+  </div>
+  }
+</section>

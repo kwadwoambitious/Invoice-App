@@ -1,0 +1,94 @@
+div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--white);
+  padding: 3rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: 0.2s border;
+}
+div:hover {
+  border: 2px solid var(--primary-color);
+}
+p {
+  display: inline-block;
+  color: var(--tertiary-color);
+}
+app-badge {
+  border-radius: 8px;
+}
+span {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.left {
+  text-align: left;
+  width: 60%;
+}
+.left app-text:first-child {
+  width: 9rem;
+}
+.right {
+  text-align: right;
+  width: 40%;
+  gap: 3rem;
+}
+app-text {
+  width: 13rem;
+}
+@media (max-width: 710px) {
+  .right {
+    width: 40%;
+    gap: 1.8rem;
+  }
+}
+
+@media (max-width: 500px) {
+  span {
+    flex-direction: column;
+    height: 100%;
+  }
+  .left {
+    align-items: flex-start;
+    text-align: left;
+  }
+  .right {
+    align-items: flex-end;
+    text-align: right;
+  }
+  div {
+    padding: 2rem 3rem;
+    position: relative;
+    height: 13rem;
+  }
+  app-icon {
+    display: none;
+  }
+  .right app-text:first-child {
+    position: absolute;
+    left: 3rem;
+    bottom: 2rem;
+    text-align: left;
+  }
+  .left app-text:last-child {
+    position: absolute;
+    right: 3rem;
+    top: 2rem;
+    width: 20rem;
+    text-align: right;
+  }
+  .left app-text:first-child {
+    position: absolute;
+    left: 3rem;
+    top: 2rem;
+  }
+  app-badge {
+    margin-top: auto;
+  }
+  #date {
+    margin-top: 1rem;
+  }
+}

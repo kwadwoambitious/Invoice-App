@@ -1,0 +1,394 @@
+form {
+  margin-top: 3rem;
+  max-height: calc(100vh - 6rem);
+  overflow-y: auto;
+  padding-bottom: 8rem;
+  border-bottom-right-radius: 40px;
+}
+
+::-webkit-scrollbar {
+  width: 1px;
+  height: 1px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+app-icon[altText="right-arrow"] {
+  display: flex;
+  gap: 1rem;
+  margin-left: 0;
+  margin-bottom: 2rem;
+}
+
+.input-field {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin-top: 2.5rem;
+}
+
+.labels {
+  display: flex;
+  justify-content: space-between;
+}
+
+.shade {
+  display: none;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--footer-bg);
+  z-index: 10;
+  height: 9rem;
+  padding: 0 3rem;
+  box-shadow: 0 -3px 4px rgba(0, 0, 0, 0.1);
+}
+
+footer span {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.editing-footer {
+  justify-content: flex-end;
+  gap: 2rem;
+}
+
+.sender-address {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  margin-bottom: 4rem;
+  margin-top: 3rem;
+}
+
+.address {
+  display: flex;
+  gap: 5%;
+}
+
+.address .input-field {
+  width: 30%;
+}
+
+.dates {
+  display: flex;
+  gap: 10%;
+}
+
+.dates .input-field {
+  width: 45%;
+}
+
+.grid-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 2rem;
+}
+
+.items {
+  margin: 4rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.form-input {
+  font-weight: 700;
+  padding: 1rem;
+  border: 1px solid var(--grey);
+  border-radius: 4px;
+  outline: none;
+  background-color: var(--input-bg);
+  color: var(--base-black);
+}
+
+.form-input:active,
+.form-input:focus {
+  outline: 1px solid var(--primary-color);
+  border: none;
+}
+
+.form-input::placeholder {
+  color: white;
+}
+
+.due-date-dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  cursor: pointer;
+  color: var(--base-black);
+  font-size: 1.2rem;
+  margin-top: auto;
+  border: 1px solid var(--grey);
+  background-color: transparent;
+  border-radius: 4px;
+  padding: 2px 0;
+}
+
+[altText="right-arrow"] {
+  margin-left: 1rem;
+}
+
+.due-date-display {
+  padding: 10px;
+  border-radius: 4px;
+  text-align: center;
+  user-select: none;
+}
+
+.due-date-display span {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.due-date-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: var(--filter-bg);
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  margin-top: 1rem;
+  border: none;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  color: var(--secondary-color);
+  transition: 0.3s all;
+}
+
+.due-date-options label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+  padding: 0.5rem 0;
+  color: var(--date-color);
+}
+
+label {
+  font-size: 12px;
+}
+
+label p {
+  font-weight: 600;
+}
+
+.due-date-options label:hover p {
+  color: var(--primary-color);
+}
+
+hr {
+  border: 1px solid var(--tertiary-color);
+  opacity: 0.1;
+}
+
+input[type="radio"] {
+  visibility: hidden;
+}
+
+input[type="radio"]:checked + p {
+  color: var(--primary-color);
+}
+
+.grid-row-input {
+  display: grid;
+  grid-template-columns: 1.5fr 0.5fr 1fr 1fr;
+  gap: 5%;
+  align-items: center;
+}
+
+.grid-row-input input {
+  width: 100%;
+}
+
+.grid-row-input span {
+  display: flex;
+  align-items: center;
+}
+
+#total {
+  border: none;
+  background-color: transparent;
+  padding-left: 0;
+}
+
+app-text {
+  color: red;
+}
+
+app-text p {
+  display: inline-block;
+  color: var(--tertiary-color);
+}
+
+.errors {
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.error input {
+  border: 1px solid var(--error);
+  outline: none;
+}
+
+form.ng-invalid.ng-touched {
+  border: none;
+}
+
+.grid-row-input .input-field {
+  margin-top: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.grid-row-input .input-field > label {
+  display: none;
+  font-size: 17px;
+}
+.icon {
+  margin-left: 1rem;
+}
+input[id^="total-"] {
+  border: none;
+  background-color: transparent;
+  padding-left: 0;
+  color: #888eb0;
+}
+
+@media (max-width: 940px) {
+  form {
+    max-height: calc(100vh - 14rem);
+    margin-top: 4rem;
+  }
+}
+
+@media (max-width: 575px) {
+  form {
+    max-height: calc(100vh - 15rem);
+  }
+
+  footer {
+    height: 10rem;
+    align-items: center;
+    padding-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 500px) {
+  footer {
+    justify-content: center;
+    gap: 2rem;
+    height: 7rem;
+    align-items: flex-end;
+    padding: 0 3rem;
+    padding-bottom: 1.5rem;
+    z-index: 10;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+  }
+
+  footer span {
+    gap: 2rem;
+  }
+
+  .shade {
+    display: block;
+    width: 100%;
+    height: 6rem;
+    position: absolute;
+    bottom: 7rem;
+    left: 0;
+    background-image: linear-gradient(
+      to top,
+      #dddddd,
+      #e5e5e5,
+      #eeeeee,
+      #f6f6f6,
+      #ffffff
+    );
+  }
+
+  form {
+    margin-bottom: 3rem;
+    max-height: calc(100vh - 17rem);
+  }
+
+  .address {
+    display: flex;
+    gap: 10%;
+    flex-wrap: wrap;
+  }
+
+  .address .input-field {
+    width: 45%;
+  }
+
+  .address .input-field:last-child {
+    width: 100%;
+  }
+
+  .dates {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dates .input-field {
+    width: 100%;
+  }
+
+  .items {
+    margin-bottom: 2rem;
+  }
+
+  .grid-row-input {
+    align-items: center;
+    grid-template-rows: auto auto;
+    grid-template-columns: 0.5fr 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .grid-row-input .input-field {
+    margin-top: 0;
+  }
+
+  .grid-row-input .input-field:first-child {
+    grid-column: span 3;
+    width: 100%;
+  }
+
+  .grid-row-input .input-field:nth-child(2),
+  .grid-row-input .input-field:nth-child(3),
+  .grid-row-input span {
+    grid-column: span 1;
+    width: 100%;
+  }
+
+  .grid-row-input .input-field > label {
+    display: block;
+  }
+}

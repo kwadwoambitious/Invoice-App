@@ -1,0 +1,114 @@
+.logo-container {
+  background-color: var(--primary-color);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+  height: 9rem;
+  border-top-right-radius: 25px;
+}
+.logo-container::after {
+  content: "";
+  display: block;
+  position: absolute;
+  background-color: #9277ff;
+  top: 60px;
+  width: 100%;
+  z-index: 3;
+  height: 6rem;
+  border-top-left-radius: 30px;
+  border-bottom-right-radius: 25px;
+}
+.logo {
+  position: absolute;
+  top: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+hr {
+  width: 100%;
+  border: 1px solid #494e6e;
+}
+.theme-toggler-and-avatar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 0;
+}
+@media (max-width: 940px) {
+  .logo-container {
+    background-color: var(--primary-color);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10rem;
+    z-index: 2;
+    height: 60%;
+  }
+  .logo-container::after {
+    content: "";
+    display: block;
+    position: absolute;
+    background-color: #9277ff;
+    width: 10rem;
+    left: 0;
+    top: 4.14rem;
+    z-index: 3;
+    height: 90%;
+    border-top-left-radius: 0;
+  }
+  .logo {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+  }
+  .theme-toggler-and-avatar {
+    position: absolute;
+    right: 0;
+    width: 25rem;
+    height: 100%;
+    padding: 0 3rem;
+    flex-direction: row;
+  }
+  hr {
+    height: 100%;
+    width: 0;
+  }
+}
+@media (max-width: 575px) {
+  .logo-container {
+    height: 60%;
+    width: 12rem;
+  }
+  .logo-container::after {
+    height: 90%;
+    width: 12rem;
+    top: 5.45rem;
+  }
+  .logo {
+    top: 45%;
+  }
+}
+@media (max-width: 500px) {
+  .theme-toggler-and-avatar {
+    width: 17rem;
+    padding: 0 2rem;
+  }
+  .logo-container {
+    width: 10rem;
+    height: 60%;
+  }
+  .logo-container::after {
+    width: 10rem;
+    top: 4.14rem;
+    height: 90%;
+  }
+}

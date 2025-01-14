@@ -1,0 +1,28 @@
+<span class="headline-title">
+  <app-text type="bold" [size]="viewportWidth <= 500 ? '3rem' : '4rem'"
+    >Invoices</app-text
+  >
+  @if(!!allInvoices().length){
+  <app-text size="1.3rem">{{
+    viewportWidth <= 500
+      ? allInvoices().length + " invoices"
+      : "There are " + allInvoices().length + " total invoices"
+  }}</app-text>
+  }@else {
+  <app-text>No invoices</app-text>
+  }
+</span>
+
+<span class="action-buttons">
+  <app-filter></app-filter>
+
+  <app-button (onClick)="openInvoiceForm()">
+    <app-icon
+      imgSrc="/assets/images/icon-plus.svg"
+      altText="icon-plus"
+      [height]="13"
+      [width]="13"
+    ></app-icon>
+    <p>{{ viewportWidth <= 500 ? "New" : "New Invoice" }}</p>
+  </app-button>
+</span>

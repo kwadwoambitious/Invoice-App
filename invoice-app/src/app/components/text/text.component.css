@@ -1,0 +1,10 @@
+.bold {
+  color: var(--base-black);
+  font-weight: 700;
+  font-size: 1.7rem;
+}
+
+.regular {
+  color: var(--text-primary-color);
+  font-size: 1.4rem;
+}
