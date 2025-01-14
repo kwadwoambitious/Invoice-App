@@ -1,0 +1,31 @@
+<div class="filter-menu" (click)="toggleMenu()">
+  <div class="filter-button">
+    <span>
+      {{ viewportWidth <= 500 ? "Filter" : "Filter by status" }}
+      <app-icon
+        imgSrc="/assets/images/icon-arrow-down.svg"
+        altText="arrow-down"
+        [height]="9"
+        [width]="14"
+        [rotationAngle]="isShown ? '180deg' : '0deg'"
+      ></app-icon>
+    </span>
+  </div>
+  <div
+    class="filter-selections"
+    [ngStyle]="{ display: isShown ? 'flex' : 'none' }"
+  >
+    <label>
+      <input type="checkbox" value="Draft" />
+      <span>Draft</span>
+    </label>
+    <label>
+      <input type="checkbox" value="Pending" />
+      <span>Pending</span>
+    </label>
+    <label>
+      <input type="checkbox" value="Paid" />
+      <span>Paid</span>
+    </label>
+  </div>
+</div>

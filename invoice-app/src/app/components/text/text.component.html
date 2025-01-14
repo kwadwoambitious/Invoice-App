@@ -1,0 +1,6 @@
+<p
+  [ngClass]="{ regular: type === 'regular', bold: type === 'bold' }"
+  [ngStyle]="{ color: color ? color : '', fontSize: size ? size : '' }"
+>
+  <ng-content></ng-content>
+</p>

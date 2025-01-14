@@ -1,0 +1,12 @@
+<button (click)="themeToggler()">
+  <img
+    [src]="
+      isDarkMode()
+        ? '/assets/images/icon-sun.svg'
+        : '/assets/images/icon-moon.svg'
+    "
+    [alt]="isDarkMode() ? 'sun-icon' : 'moon-icon'"
+    [height]="viewportWidth <= 500 ? 24 : 27"
+    [width]="viewportWidth <= 500 ? 24 : 27"
+  />
+</button>

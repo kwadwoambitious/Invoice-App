@@ -1,0 +1,72 @@
+.filter-menu {
+  position: relative;
+  display: inline-block;
+  width: 16rem;
+  cursor: pointer;
+  color: var(--base-black);
+  font-size: 1.2rem;
+}
+.filter-button {
+  padding: 10px;
+  border-radius: 4px;
+  text-align: center;
+  user-select: none;
+}
+app-icon {
+  margin-left: 1rem;
+}
+.filter-selections {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: var(--filter-bg);
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  margin-top: 1rem;
+  border: none;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  color: var(--secondary-color);
+  transition: 0.3s all;
+  z-index: 5;
+}
+.filter-selections label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+.filter-selections input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  appearance: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  background-color: var(--grey);
+}
+.filter-selections input[type="checkbox"]:hover {
+  border: 1px solid var(--primary-color);
+}
+.filter-selections input[type="checkbox"]:checked {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+.filter-selections input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  left: 40%;
+  top: 3px;
+  width: 4px;
+  height: 9px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}

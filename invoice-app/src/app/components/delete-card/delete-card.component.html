@@ -1,0 +1,16 @@
+<app-text type="bold" size="2.2rem">Confirm Deletion</app-text>
+<app-text size="1.3rem"
+  >Are you sure you want to delete invoice #{{ invoiceId }}? This action cannot
+  be undone.</app-text
+>
+<div>
+  <app-button
+    color="var(--edit-text-color)"
+    [type]="ButtonType.Cancel"
+    (onClick)="cancelHandler()"
+    >Cancel</app-button
+  >
+  <app-button [type]="ButtonType.Delete" (onClick)="deleteHandler()"
+    >Delete</app-button
+  >
+</div>

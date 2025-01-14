@@ -1,0 +1,167 @@
+<section>
+  <app-icon
+    imgSrc="/assets/images/icon-arrow-left.svg"
+    altText="right-arrow"
+    [width]="10"
+    [height]="13"
+    (onClick)="navigateToDashboard()"
+    ><app-text>Go back</app-text></app-icon
+  >
+
+  <div class="header">
+    <span>
+      <app-text>Status</app-text>
+      <app-badge [status]="invoice()?.status">{{
+        invoice()?.status
+      }}</app-badge>
+    </span>
+
+    <span>
+      <app-button
+        color="var(--edit-text-color)"
+        [type]="ButtonType.Edit"
+        (onClick)="openEditForm()"
+        >Edit</app-button
+      >
+      <app-button [type]="ButtonType.Delete" (onClick)="deleteHandler()"
+        >Delete</app-button
+      >
+      <app-button
+        [disabled]="invoice()?.status === 'draft'"
+        (onClick)="onChangeStatus(invoice()?.status)"
+        >Mark as Paid</app-button
+      >
+    </span>
+  </div>
+
+  <div class="invoice-details">
+    <div class="description">
+      <span class="item">
+        <app-text type="bold">
+          <p>#</p>
+          {{ invoice()?.id }}
+        </app-text>
+        <app-text>{{ invoice()?.description }}</app-text>
+      </span>
+
+      <span class="address">
+        <app-text size="1.2rem">{{
+          invoice()?.senderAddress?.street
+        }}</app-text>
+        <app-text size="1.2rem">{{
+          invoice()?.senderAddress?.postCode
+        }}</app-text>
+        <app-text size="1.2rem">{{ invoice()?.senderAddress?.city }}</app-text>
+        <app-text size="1.2rem">{{
+          invoice()?.senderAddress?.country
+        }}</app-text>
+      </span>
+    </div>
+
+    <div class="details">
+      <span class="date">
+        <span class="date__created">
+          <app-text>Invoice Date</app-text>
+          <app-text type="bold" size="1.6rem">{{
+            invoice()?.createdAt | date : "d MMM, yyyy"
+          }}</app-text>
+        </span>
+
+        <span class="date__due">
+          <app-text>Payment Due</app-text>
+          <app-text type="bold" size="1.6rem">{{
+            invoice()?.paymentDue | date : "d MMM, yyyy"
+          }}</app-text>
+        </span>
+      </span>
+
+      <span class="client">
+        <app-text>Bill To</app-text>
+        <app-text type="bold" size="1.6rem">{{
+          invoice()?.clientName
+        }}</app-text>
+        <app-text size="1.2rem">{{
+          invoice()?.clientAddress?.street
+        }}</app-text>
+        <app-text size="1.2rem">{{
+          invoice()?.clientAddress?.postCode
+        }}</app-text>
+        <app-text size="1.2rem">{{ invoice()?.clientAddress?.city }}</app-text>
+        <app-text size="1.2rem">{{
+          invoice()?.clientAddress?.country
+        }}</app-text>
+      </span>
+
+      <span class="email">
+        <app-text>Sent To</app-text>
+        <app-text type="bold" size="1.6rem">{{
+          invoice()?.clientEmail
+        }}</app-text>
+      </span>
+    </div>
+
+    <div class="numeric">
+      @if(viewportWidth>500){
+      <div class="grid-row">
+        <app-text color="var(--tertiary-color)" size="1.1rem" class="heading"
+          >Item Name</app-text
+        >
+        <app-text color="var(--tertiary-color)" size="1.1rem" class="heading"
+          >QTY.</app-text
+        >
+        <app-text color="var(--tertiary-color)" size="1.1rem" class="heading"
+          >Price</app-text
+        >
+        <app-text color="var(--tertiary-color)" size="1.1rem" class="heading"
+          >Total</app-text
+        >
+      </div>
+      } @for(item of invoice()?.items; track $index){
+      <div class="grid-row">
+        <app-text type="bold" size="1.4rem" class="grid-item">{{
+          item.name
+        }}</app-text>
+        <app-text
+          type="bold"
+          size="1.4rem"
+          color="var(--tertiary-color)"
+          class="grid-item"
+          id="quantity"
+          >{{ item.quantity }}{{ viewportWidth <= 500 ? " x " : "" }}</app-text
+        >
+        <app-text
+          type="bold"
+          size="1.4rem"
+          color="var(--tertiary-color)"
+          class="grid-item"
+          id="price"
+          >{{ item.price | currency : "GBP" }}</app-text
+        >
+        <app-text
+          type="bold"
+          [size]="viewportWidth <= 500 ? '1.6rem' : '1.4rem'"
+          class="grid-item"
+          >{{ item.total | currency : "GBP" }}</app-text
+        >
+      </div>
+      }
+    </div>
+    <div class="total">
+      <app-text color="#fff" size="1.3rem">{{
+        viewportWidth <= 500 ? "Grand Total" : "Amount Due"
+      }}</app-text>
+      <app-text
+        type="bold"
+        color="#fff"
+        [size]="viewportWidth <= 500 ? '1.9rem' : '2.2rem'"
+        >{{ invoice()?.total | currency : "GBP" }}</app-text
+      >
+    </div>
+  </div>
+  @if(isDeleteDialogOpen()){
+  <app-delete-card></app-delete-card>
+  }
+</section>
+@if(isDeleteDialogOpen()){
+<app-dialog></app-dialog>
+}
